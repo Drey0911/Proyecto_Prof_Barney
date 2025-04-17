@@ -101,7 +101,8 @@
       AND a.estado_calificacion_director = 'Aprobado'
       AND a.estado_calificacion_evaluador <> 'Con Cambios'
       AND a.estado_calificacion_evaluador <> 'Aprobado'
-        AND a.estado_calificacion_evaluador <> 'No Aprobado'
+      AND a.estado_calificacion_evaluador <> 'No Aprobado'
+       AND a.id_evaluador = ${idEvaluador}
     ORDER BY a.id_estudiante;
 </sql:query>
 

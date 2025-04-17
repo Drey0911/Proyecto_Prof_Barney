@@ -99,6 +99,7 @@
       AND a.version = (SELECT MAX(b.version) FROM anteproyecto b WHERE b.id_estudiante = a.id_estudiante)
       AND a.estado_calificacion_coordinador = 'Aprobado'
       AND a.estado_calificacion_director = ''
+      AND a.id_director = ${idDirector}
     ORDER BY a.id_estudiante;
 </sql:query>
 
