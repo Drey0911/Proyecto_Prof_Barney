@@ -54,7 +54,7 @@
             </c:otherwise>
         </c:choose>
         <c:set var="successMessage" scope="session" value="Calificación asignada correctamente." />
-        <c:redirect url="calificacionCoorGestion.jsp?id=${idDirector}&rol=${rol}&nombre_rol=${nombreRol}&nombres=${nombres}" />
+        <c:redirect url="calificacionDirGestion.jsp?id=${idDirector}&rol=${rol}&nombre_rol=${nombreRol}&nombres=${nombres}" />
     </c:if>
 </c:if>
 

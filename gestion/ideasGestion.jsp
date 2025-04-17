@@ -108,6 +108,9 @@
 
     </c:choose>
 <c:url var="redirectUrl" value="ideasGestion.jsp">
+<c:if test="${not empty param.id}">
+        <c:param name="id" value="${param.id}"/>
+    </c:if>
     <c:if test="${not empty param.nombre_rol}">
         <c:param name="nombre_rol" value="${param.nombre_rol}"/>
     </c:if>

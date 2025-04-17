@@ -37,13 +37,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../vistas/principal.jsp?rol=${param.rol}&nombre_rol=${param.nombre_rol}&nombres=${param.nombres}"><i class="fas fa-home me-1"></i> Inicio</a>
+            <a class="nav-link" href="../vistas/principal.jsp?id=${param.id}&rol=${param.rol}&nombre_rol=${param.nombre_rol}&nombres=${param.nombres}"><i class="fas fa-home me-1"></i> Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#crud"><i class="fa-solid fa-briefcase"></i> Gestion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../vistas/principal.jsp?rol=${param.rol}&nombre_rol=${param.nombre_rol}&nombres=${param.nombres}#about"><i class="fas fa-info-circle me-1"></i> Importante</a>
+            <a class="nav-link" href="../vistas/principal.jsp?id=${param.id}&rol=${param.rol}&nombre_rol=${param.nombre_rol}&nombres=${param.nombres}#about"><i class="fas fa-info-circle me-1"></i> Importante</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="../logout.jsp"><i class="fa-solid fa-sign-out-alt"></i> Cerrar Sesion</a>
@@ -119,6 +119,9 @@
       
     </c:choose>
 <c:url var="redirectUrl" value="usuariosGestion.jsp">
+   <c:if test="${not empty param.id}">
+        <c:param name="id" value="${param.id}"/>
+    </c:if>
     <c:if test="${not empty param.nombre_rol}">
         <c:param name="nombre_rol" value="${param.nombre_rol}"/>
     </c:if>
