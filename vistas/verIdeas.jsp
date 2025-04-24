@@ -24,6 +24,29 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
   <title>UTS - Ideas de Anteproyecto</title>
+  <style>
+  /* Estilos personalizados para el encabezado de la tabla */
+  #ideasTable thead {
+    background: linear-gradient(135deg, rgb(111, 183, 62) 0%, #c1d631 50%, rgb(131, 214, 49) 100%) !important;
+  }
+  
+  #ideasTable thead th {
+    color: white !important;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    border: none !important;
+    font-weight: bold;
+    background: transparent !important;
+  }
+  
+  /* Estilos para las filas */
+  #ideasTable tbody tr:nth-child(even) {
+    background-color: rgba(193, 214, 49, 0.1) !important;
+  }
+  
+  #ideasTable tbody tr:hover {
+    background-color: rgba(111, 183, 62, 0.2) !important;
+  }
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -279,7 +302,7 @@
             <li><a href="https://www.uts.edu.co/sitio/atencion-al-ciudadano/" class="text-white-50">Atencion al ciudadano</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
+ <div class="col-md-4">
           <h5>Redes</h5>
           <div class="mt-3">
             <a href="https://github.com/Drey0911" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>

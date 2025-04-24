@@ -23,6 +23,29 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
   <title>UTS - Gestión de Roles</title>
+  <style>
+  /* Estilos personalizados para el encabezado de la tabla */
+  #rolesTable thead {
+    background: linear-gradient(135deg, rgb(111, 183, 62) 0%, #c1d631 50%, rgb(131, 214, 49) 100%) !important;
+  }
+  
+  #rolesTable thead th {
+    color: white !important;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    border: none !important;
+    font-weight: bold;
+    background: transparent !important;
+  }
+  
+  /* Estilos para las filas */
+  #rolesTable tbody tr:nth-child(even) {
+    background-color: rgba(193, 214, 49, 0.1) !important;
+  }
+  
+  #rolesTable tbody tr:hover {
+    background-color: rgba(111, 183, 62, 0.2) !important;
+  }
+</style>
 </head>
 <body>
 
@@ -398,7 +421,7 @@
             <li><a href="https://www.uts.edu.co/sitio/atencion-al-ciudadano/" class="text-white-50">Atencion al ciudadano</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
+       <div class="col-md-4">
           <h5>Redes</h5>
           <div class="mt-3">
             <a href="https://github.com/Drey0911" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>

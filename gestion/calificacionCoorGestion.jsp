@@ -148,6 +148,29 @@
     <style>
         .ancho-columna { min-width: 180px; }
     </style>
+  <style>
+  /* Estilos personalizados para el encabezado de la tabla */
+  #tablaCalificacion thead {
+    background: linear-gradient(135deg, rgb(111, 183, 62) 0%, #c1d631 50%, rgb(131, 214, 49) 100%) !important;
+  }
+  
+  #tablaCalificacion thead th {
+    color: white !important;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    border: none !important;
+    font-weight: bold;
+    background: transparent !important;
+  }
+  
+  /* Estilos para las filas */
+  #tablaCalificacion tbody tr:nth-child(even) {
+    background-color: rgba(193, 214, 49, 0.1) !important;
+  }
+  
+  #tablaCalificacion tbody tr:hover {
+    background-color: rgba(111, 183, 62, 0.2) !important;
+  }
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -210,20 +233,20 @@
                 <thead class="table-dark">
                     <tr>
                         <th>Versión</th>
-                        <th class="ancho-columna">Estudiante #1</th>
-                        <th class="ancho-columna">Estudiante #2</th>
-                        <th class="ancho-columna">Idea</th>
-                        <th class="ancho-columna">Anteproyecto</th>
-                        <th class="ancho-columna">Recibo</th>
-                        <th class="ancho-columna">Director</th>
-                        <th class="ancho-columna">Evaluador</th>
-                        <th class="ancho-columna">Coordinador</th>
+                        <th class="ancho-columna text-center">Estudiante #1</th>
+                        <th class="ancho-columna text-center">Estudiante #2</th>
+                        <th class="ancho-columna text-center">Idea</th>
+                        <th class="ancho-columna text-center">Anteproyecto</th>
+                        <th class="ancho-columna text-center">Recibo</th>
+                        <th class="ancho-columna text-center">Director</th>
+                        <th class="ancho-columna text-center">Evaluador</th>
+                        <th class="ancho-columna text-center">Coordinador</th>
                         <th>Estado Director</th>
                         <th>Estado Evaluador</th>
                         <th>Estado Coordinador</th>
-                        <th class="ancho-columna">Ultima Actualizacion</th>
+                        <th class="ancho-columna text-center">Ultima Actualizacion</th>
                         <th>Calificación</th>
-                        <th class="ancho-columna">Acciones</th>
+                        <th class="ancho-columna text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -364,22 +387,14 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Redes</h5>
-                    <div class="mt-3">
-                        <a href="https://github.com/Drey0911" class="text-white me-3">
-                            <i class="fab fa-github fa-lg"></i>
-                        </a>
-                        <a href="https://www.facebook.com/UnidadesTecnologicasdeSantanderUTS/" class="text-white me-3">
-                            <i class="fab fa-facebook fa-lg"></i>
-                        </a>
-                        <a href="https://www.instagram.com/unidades_uts/" class="text-white me-3">
-                            <i class="fab fa-instagram fa-lg"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UC-rIi4OnN0R10Wp-cPiLcpQ" class="text-white">
-                            <i class="fab fa-youtube fa-lg"></i>
-                        </a>
-                    </div>
-                </div>
+          <h5>Redes</h5>
+          <div class="mt-3">
+            <a href="https://github.com/Drey0911" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
+            <a href="https://www.facebook.com/UnidadesTecnologicasdeSantanderUTS/" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://www.instagram.com/unidades_uts/" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://www.youtube.com/channel/UC-rIi4OnN0R10Wp-cPiLcpQ" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+        </div>
                   <div class="row mt-4">
 <hr class="my-4 bg-light opacity-25">
           <p class="footer-text mb-0">© 2025 Andrey Stteven Mantilla Leon Todos los derechos reservados.</p>
