@@ -26,7 +26,7 @@
                 response.setContentLength((int) archivo.length());
 
 InputStream in = archivo.getBinaryStream();
-OutputStream outputStream = response.getOutputStream(); // ✅ corregido
+OutputStream outputStream = response.getOutputStream(); 
 byte[] buffer = new byte[4096];
 int bytesRead;
 

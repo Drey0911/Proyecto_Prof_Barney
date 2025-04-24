@@ -76,6 +76,7 @@
            a.estado_calificacion_evaluador,
            a.estado_calificacion_coordinador,
            a.calificacion_total,
+           a.fecha_actu,
            i.nombre_idea,
            CONCAT(d.nombres, ' ', d.apellido1, ' ', d.apellido2) AS nombre_director,
            CONCAT(e.nombres, ' ', e.apellido1, ' ', e.apellido2) AS nombre_evaluador,
@@ -99,8 +100,9 @@
       AND a.version = (SELECT MAX(b.version) FROM anteproyecto b WHERE b.id_estudiante = a.id_estudiante)
       AND a.estado_calificacion_coordinador = 'Aprobado'
       AND a.estado_calificacion_director = ''
-      AND a.id_director = ${idDirector}
-    ORDER BY a.id_estudiante;
+      AND a.id_director = ?
+    ORDER BY a.id_estudiante
+    <sql:param value="${idDirector}" />
 </sql:query>
 
 <%-- limpiar las alertas del JS --%>
@@ -196,13 +198,14 @@
                         <th class="ancho-columna">Idea</th>
                         <th class="ancho-columna">Anteproyecto</th>
                         <th class="ancho-columna">Recibo</th>
-                        <th>Director</th>
-                        <th>Evaluador</th>
-                        <th>Coordinador</th>
+                        <th class="ancho-columna">Director</th>
+                        <th class="ancho-columna">Evaluador</th>
+                        <th class="ancho-columna">Coordinador</th>
                         <th>Estado Director</th>
                         <th>Estado Evaluador</th>
                         <th>Estado Coordinador</th>
-                        <th>Calificación</th>
+                        <th>Estado Coordinador</th>
+                        <th class="ancho-columna">Ultima Actualizacion</th>
                         <th class="ancho-columna">Acciones</th>
                     </tr>
                 </thead>
@@ -281,6 +284,7 @@
                                         ${empty ap.calificacion_total ? 'Pendiente' : ap.calificacion_total}
                                     </span>
                                 </td>
+                                <td class="text-center">${ap.fecha_actu}</td>
                             <td>
                                 <c:if test="${empty ap.calificacion_total}">
                                     <form method="post">

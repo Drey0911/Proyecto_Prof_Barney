@@ -50,6 +50,9 @@
     <c:set var="estadoCalificacionEvaluador" value="${anteProy.rows[0].estado_calificacion_evaluador}" />
     <c:set var="estadoCalificacionCoordinador" value="${anteProy.rows[0].estado_calificacion_coordinador}" />
     <c:set var="calificacionTotal" value="${anteProy.rows[0].calificacion_total}" />
+    <c:set var="fechaActualizacion" value="${anteProy.rows[0].fecha_actu}" />
+    <c:set var="Evaluador" value="${anteProy.rows[0].id_director}" />
+    <c:set var="Director" value="${anteProy.rows[0].id_evaluador}" />
 </c:if>
 <c:if test="${empty anteProy.rows}">
     <c:set var="tieneAnteproyecto" value="false" />
@@ -81,13 +84,24 @@
 </c:if>
 
 <%--
+  Revisar si existe director y evaluador
+--%>
+<c:if test="${empty anteProy.rows[0].id_evaluador and empty anteProy.rows[0].id_director}">
+    <c:set var="tieneDocentes" value="false" />
+</c:if>
+<c:if test="${not empty anteProy.rows[0].id_evaluador and not empty anteProy.rows[0].id_director}">
+    <c:set var="tieneDocentes" value="true" />
+</c:if>
+
+
+<%--
   3. Lógica para determinar si se puede agregar una nueva versión.
 --%>
 <c:set var="puedeAgregarVersion" value="false" />
 <c:if test="${tieneAnteproyecto}">
     <c:choose>
         <c:when test="${versionActual == 1}">
-            <c:if test="${not empty reciboPago and estadoCalificacionCoordinador eq 'Aprobado' }">
+            <c:if test="${not empty reciboPago and estadoCalificacionCoordinador eq 'Aprobado' and tieneDocentes eq true}">
                 <c:set var="puedeAgregarVersion" value="true" />
             </c:if>
         </c:when>
@@ -122,8 +136,8 @@
     <c:if test="${accion eq 'nuevaIdea' and tieneAnteproyecto eq false and not empty ideaSeleccionada}">
         <%-- Inserta el nuevo registro en anteproyecto --%>
         <sql:update dataSource="${trabajosdegradoBD}">
-            INSERT INTO anteproyecto (id_idea, id_estudiante, id_estudiante2, version, estado_calificacion_coordinador)
-            VALUES (?, ?, ?, 1, '')
+            INSERT INTO anteproyecto (id_idea, id_estudiante, id_estudiante2, version, estado_calificacion_coordinador, fecha_actu)
+            VALUES (?, ?, ?, 1, '',NOW())
             <sql:param value="${ideaSeleccionada}" />
             <sql:param value="${idEstudiante}" />
             <sql:param value="${null}"/>
@@ -170,8 +184,8 @@
                     <sql:update dataSource="${trabajosdegradoBD}">
                         INSERT INTO anteproyecto (id_idea, id_estudiante, id_estudiante2, id_director, id_evaluador, id_coordinador,
                             recibo_pago, recibo_tipo, recibo_nombre, archivo, archivo_nombre, archivo_tipo, version,
-                            estado_calificacion_director, estado_calificacion_evaluador, estado_calificacion_coordinador, calificacion_total)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+                            estado_calificacion_director, estado_calificacion_evaluador, estado_calificacion_coordinador, calificacion_total, fecha_actu)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,NOW())
                         <sql:param value="${idIdeaCopy}" />
                         <sql:param value="${idEstudiante}" />
                         <sql:param value="${idEstudiante2}" />
@@ -359,7 +373,7 @@
             </c:when>
             
             <%-- Si se permite agregar nueva versión del anteproyecto --%>
-            <c:when test="${tieneAnteproyecto eq true and puedeAgregarVersion eq true and estadoCalificacionCoordinador eq 'Aprobado' and adjuntorecibopago eq true}">
+            <c:when test="${tieneAnteproyecto eq true and puedeAgregarVersion eq true and estadoCalificacionCoordinador eq 'Aprobado' and adjuntorecibopago eq true and tieneDocentes eq true}">
                 <div class="container mt-5 border shadow p-3 mb-5 bg-body-tertiary rounded">
                     <form method="post">
                         <input type="hidden" name="accion" value="agregarVersion" />
@@ -397,7 +411,7 @@
         <sql:query dataSource="${trabajosdegradoBD}" var="misAnteproyectos">
             SELECT a.id, i.nombre_idea, a.archivo_nombre, a.estado_calificacion_director, 
                    a.estado_calificacion_evaluador, a.calificacion_total, a.version,
-                   a.estado_calificacion_coordinador, a.recibo_nombre, a.id_estudiante2,
+                   a.estado_calificacion_coordinador, a.recibo_nombre, a.id_estudiante2, a.fecha_actu,
                    CONCAT(d.nombres, ' ', d.apellido1, ' ', d.apellido2) AS nombre_director,
                    CONCAT(e.nombres, ' ', e.apellido1, ' ', e.apellido2) AS nombre_evaluador,
                    CONCAT(c.nombres, ' ', c.apellido1, ' ', c.apellido2) AS nombre_coordinador,
@@ -431,12 +445,13 @@
                         <th class="ancho-columna">Idea</th>
                         <th class="ancho-columna">Anteproyecto</th>
                         <th class="ancho-columna">Recibo</th>
-                        <th>Director</th>
-                        <th>Evaluador</th>
-                        <th>Coordinador</th>
+                        <th class="ancho-columna">Director</th>
+                        <th class="ancho-columna">Evaluador</th>
+                        <th class="ancho-columna">Coordinador</th>
                         <th>Estado Director</th>
                         <th>Estado Evaluador</th>
                         <th>Estado Coordinador</th>
+                        <th class="ancho-columna" >Ultima Actualizacion</th>
                         <th>Calificación</th>
                         <th>Acciones</th>
                     </tr>
@@ -549,6 +564,7 @@
                                     ${empty ap.estado_calificacion_coordinador ? 'Pendiente' : ap.estado_calificacion_coordinador}
                                 </span>
                             </td>
+                            <td class="text-center">${ap.fecha_actu}</td>
                             <td>
                                 <span class="badge bg-${ap.calificacion_total eq 'Aprobado' ? 'success' : (ap.calificacion_total eq 'No Aprobado' ? 'danger' : (ap.calificacion_total eq 'Con Cambios' ? 'warning' : 'secondary'))}">
                                     ${empty ap.calificacion_total ? 'Pendiente' : ap.calificacion_total}

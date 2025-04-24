@@ -12,12 +12,10 @@
     response.setContentType("text/html;charset=UTF-8");
     String idAnteproyecto = request.getParameter("idAnteproyecto");
     boolean actualizado = false;
-        String nombreArchivoSubido = "";
+    String nombreArchivoSubido = "";
     
-    // Fixed return URL with the correct path
     String backUrl = "../gestion/anteproyectoGestion.jsp";
     
-    // Add parameters to the back URL
     if (request.getParameter("idAnteproyecto") != null) {
         backUrl += "?idAnteproyecto=" + request.getParameter("idAnteproyecto");
     }
@@ -54,7 +52,6 @@
                 }
             }
             
-            // Only update if a file was selected
             if (datosArchivo != null && datosArchivo.length > 0) {
                 Connection conn = ((javax.sql.DataSource) pageContext.getAttribute("trabajosdegradoBD")).getConnection();
                 String updateSql = "UPDATE anteproyecto SET archivo = ?, archivo_nombre = ?, archivo_tipo = ? WHERE id = ?";
@@ -70,10 +67,8 @@
                 nombreArchivoSubido = nombreArchivo;
             }
             
-            // We'll handle the redirect in JavaScript after showing the notification
             if (actualizado) {
                 session.setAttribute("mensaje_exito", "El recibo de pago fue adjuntado correctamente");
-                // Not redirecting here, will do it after showing the notification
             }
         } catch (Exception e) {
             e.printStackTrace();

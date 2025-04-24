@@ -49,6 +49,7 @@
            a.archivo_nombre,
            a.recibo_nombre,
            a.version,
+           a.fecha_actu,
            i.nombre_idea,
            CONCAT(est.nombres, ' ', est.apellido1, ' ', est.apellido2) AS nombre_estudiante,
            CONCAT('Nombre: ', est.nombres, ' ', est.apellido1, ' ', est.apellido2, ' Documento: ', est.documento, ' Correo: ', est.correo, ' Telefono: ', est.telefono) AS info_estudiante,
@@ -175,6 +176,7 @@
                             <th class="ancho-columna">Recibo</th>
                             <th class="ancho-columna">Director</th>
                             <th class="ancho-columna">Evaluador</th>
+                            <th class="ancho-columna">Ultima Actualizacion</th>
                             <th class="ancho-columna">Acciones</th>
                         </tr>
                     </thead>
@@ -234,6 +236,7 @@
                                             </c:forEach>
                                         </select>
                                 </td>
+                                <td class="text-center">${ap.fecha_actu}</td>
                                <td class="ancho-columna">
     <button type="submit" class="btn btn-primary btn-sm mt-1 px-3">
         <i class="fas fa-user-plus me-1"></i> Asignar

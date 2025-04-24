@@ -76,6 +76,7 @@
            a.estado_calificacion_evaluador,
            a.estado_calificacion_coordinador,
            a.calificacion_total,
+           a.fecha_actu,
            i.nombre_idea,
            CONCAT(d.nombres, ' ', d.apellido1, ' ', d.apellido2) AS nombre_director,
            CONCAT(e.nombres, ' ', e.apellido1, ' ', e.apellido2) AS nombre_evaluador,
@@ -102,8 +103,9 @@
       AND a.estado_calificacion_evaluador <> 'Con Cambios'
       AND a.estado_calificacion_evaluador <> 'Aprobado'
       AND a.estado_calificacion_evaluador <> 'No Aprobado'
-       AND a.id_evaluador = ${idEvaluador}
-    ORDER BY a.id_estudiante;
+      AND a.id_evaluador = ?
+    ORDER BY a.id_estudiante
+    <sql:param value="${idEvaluador}" />
 </sql:query>
 
 <%-- limpiar las alertas del JS --%>
@@ -199,12 +201,13 @@
                         <th class="ancho-columna">Idea</th>
                         <th class="ancho-columna">Anteproyecto</th>
                         <th class="ancho-columna">Recibo</th>
-                        <th>Director</th>
-                        <th>Evaluador</th>
-                        <th>Coordinador</th>
+                        <th class="ancho-columna">Director</th>
+                        <th class="ancho-columna">Evaluador</th>
+                        <th class="ancho-columna">Coordinador</th>
                         <th>Estado Director</th>
                         <th>Estado Evaluador</th>
                         <th>Estado Coordinador</th>
+                        <th class="ancho-columna">Ultima Actualizacion</th>
                         <th>Calificación</th>
                         <th class="ancho-columna">Acciones</th>
                     </tr>
@@ -279,6 +282,7 @@
                                         ${empty ap.estado_calificacion_coordinador ? 'Pendiente' : ap.estado_calificacion_coordinador}
                                     </span>
                                 </td>
+                                <td class="text-center">${ap.fecha_actu}</td>
                                   <td>
                                     <span class="badge bg-${ap.calificacion_total eq 'Aprobado' ? 'success' : (ap.calificacion_total eq 'No Aprobado' ? 'danger' : (ap.calificacion_total eq 'Con Cambios' ? 'warning' : 'secondary'))}">
                                         ${empty ap.calificacion_total ? 'Pendiente' : ap.calificacion_total}

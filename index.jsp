@@ -8,7 +8,7 @@
     response.setCharacterEncoding("UTF-8");
     response.setContentType("text/html;charset=UTF-8");
 
-    // Clear any existing parameters
+    // parametros
     request.setAttribute("id", "");
     request.setAttribute("documento", "");
     request.setAttribute("nombres", "");
@@ -101,7 +101,6 @@
     </style>
 </head>
 <body>
-    <%-- SQL Query to validate login --%>
     <c:if test="${not empty param.documento and not empty param.pass}">
         <sql:query dataSource="${trabajosdegradoBD}" var="userCheck">
             SELECT u.id, u.documento, u.nombres, u.apellido1, u.apellido2, u.rol, r.nombre_rol, u.estadoLogin, 

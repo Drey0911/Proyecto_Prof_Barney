@@ -100,6 +100,7 @@
     <div class="container">
       <h2 class="section-title">Gestión</h2>
       <br>
+
       <%-- FUNCIONES DE ADMINISTRADOR --%>
       <c:choose>
         <c:when test="${param.rol eq '1'}">
@@ -147,7 +148,6 @@
 <c:when test="${param.rol eq '3'}">
   <div class="container-fluid">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-      <!-- Primera carta: Ideas de anteproyecto -->
       <div class="col">
         <div class="user-management-card shadow-lg rounded-lg border border-success h-100">
           <div class="card-header bg-success text-white py-3 text-center">
@@ -168,8 +168,6 @@
           <br>
         </div>
       </div>
-            
-      <!-- Segunda carta: Historial de Anteproyectos -->
       <div class="col">
         <div class="user-management-card shadow-lg rounded-lg border border-success h-100">
           <div class="card-header bg-success text-white py-3 text-center">
@@ -190,8 +188,6 @@
           <br>
         </div>
       </div>
-
-      <!-- Tercera carta: Aprobar y Calificar -->
       <div class="col">
         <div class="user-management-card shadow-lg rounded-lg border border-success h-100">
           <div class="card-header bg-success text-white py-3 text-center">
@@ -212,8 +208,6 @@
           <br>
         </div>
       </div>
-
-      <!-- Cuarta carta: Asignar Evaluador y Director -->
       <div class="col">
         <div class="user-management-card shadow-lg rounded-lg border border-success h-100">
           <div class="card-header bg-success text-white py-3 text-center">
@@ -237,7 +231,8 @@
     </div>
   </div>
 </c:when>
-        
+      
+       <%-- FUNCIONES DEL DIRECTOR --%>
         <c:when test="${param.rol eq '4'}">
           <div class="row">
                    <div class="col-md-4">
@@ -258,7 +253,6 @@
                 <br>
               </div>
               </div>
-
               <div class="col-md-4">
               <div class="user-management-card shadow-lg rounded-lg border border-success">
                 <div class="card-header bg-success text-white py-3 text-center">
@@ -278,9 +272,9 @@
               </div>
               </div>
 
+       <%-- FUNCIONES DEL EVALUADOR --%>
           </div>
         </c:when>
-        
         <c:when test="${param.rol eq '5'}">
           <div class="row">
             <div class="col-md-4">
@@ -301,8 +295,6 @@
                     <br>
               </div>
             </div>
-            
-
                   <div class="col-md-4">
               <div class="user-management-card shadow-lg rounded-lg border border-success">
                 <div class="card-header bg-success text-white py-3 text-center">
@@ -345,7 +337,6 @@
                 <br>
               </div>
             </div>
-            <!-- Remaining Estudiante cards follow same style -->
                    <div class="col-md-4">
               <div class="user-management-card shadow-lg rounded-lg border border-success">
                 <div class="card-header bg-success text-white py-3 text-center">
@@ -415,7 +406,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    // Ejercicio 1 popup
     function showEjercicio1() {
       Swal.fire({
         title: 'Ejercicio 1',
