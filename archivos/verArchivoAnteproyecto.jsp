@@ -8,13 +8,12 @@
         ResultSet rs = null;
 
         try {
-        /*     Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajosdegradobd", "root", "");
- */
 
-Class.forName("com.mysql.cj.jdbc.Driver");
+/* Class.forName("com.mysql.cj.jdbc.Driver");
 conn = DriverManager.getConnection("jdbc:mysql://bquksw27mmt0rblk0jty-mysql.services.clever-cloud.com:3306/bquksw27mmt0rblk0jty", "unrcbik81ijd1p7m", "Nw8GBBrbegQRQfrv7AT4");
-           
+            */
             String sql = "SELECT archivo, archivo_nombre, archivo_tipo FROM anteproyecto WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, Integer.parseInt(id));

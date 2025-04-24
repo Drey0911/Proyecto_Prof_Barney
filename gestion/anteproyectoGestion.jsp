@@ -672,9 +672,8 @@
                     </div>
                 </div>
                   <div class="row mt-4">
-        <div class="col-12">
-          <p class="small text-white-50">&copy; 2025 Andrey Mantilla. Todos los derechos reservados.</p>
-        </div>
+<hr class="my-4 bg-light opacity-25">
+          <p class="footer-text mb-0">© 2025 Andrey Stteven Mantilla Leon Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
