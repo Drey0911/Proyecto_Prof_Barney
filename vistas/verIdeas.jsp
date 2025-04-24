@@ -288,6 +288,10 @@
             <a href="https://www.youtube.com/channel/UC-rIi4OnN0R10Wp-cPiLcpQ" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
           </div>
         </div>
+          <div class="row mt-4">
+        <div class="col-12">
+          <p class="small text-white-50">&copy; 2025 Andrey Mantilla. Todos los derechos reservados.</p>
+        </div>
       </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

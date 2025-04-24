@@ -302,6 +302,10 @@
                         </a>
                     </div>
                 </div>
+                  <div class="row mt-4">
+        <div class="col-12">
+          <p class="small text-white-50">&copy; 2025 Andrey Mantilla. Todos los derechos reservados.</p>
+        </div>
             </div>
         </div>
     </footer>
